@@ -58,9 +58,6 @@ public class Capitulo {
     }
     
     
-    
-    
-    
     @Override
     public String toString(){
         return "Nombre del capítulo:"+titulo+", Fecha de emisión:"+fechaEmision+".\nVotos positivos:"+votosPositivos+", Votos negativos:"+votosNegativos;

@@ -77,11 +77,11 @@ public class Pelicula extends Media{
     }
     
     public boolean votar(int voto){
+        boolean devolver = false;
         if(voto<=10 && voto>=0){
             votos.add(voto);
-            return true;
-        } else {
-            return false;
+            devolver=true;
         }
+        return devolver;
     }
 }

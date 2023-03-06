@@ -25,43 +25,39 @@ public class Temporada {
     }
     
     public boolean añadirCapitulo(Capitulo capitulo){
+        boolean devolver = false;
         Capitulo c1=new Capitulo(capitulo);
-        if(capitulos.contains(c1) || c1.getFechaEmision().isBefore(this.fechaEstreno)){
-            return false;
-        } else {
-            capitulos.add(c1);
-            return true;
+        if(!capitulos.contains(c1) && c1.getFechaEmision().isAfter(this.fechaEstreno)){
+            devolver=true;
         }
+        return devolver;
     }
     
     public boolean añadirCapitulo(LocalDate fechaEmision, String Titulo){
+        boolean devolver = false;
         Capitulo c1 = new Capitulo(Titulo,fechaEmision);
-        if(capitulos.contains(c1) || c1.getFechaEmision().isBefore(this.fechaEstreno)){
-            return false;
-        } else {
-            capitulos.add(c1);
-            return true;
+        if(!capitulos.contains(c1) && c1.getFechaEmision().isAfter(this.fechaEstreno)){
+            devolver=true;
         }
+        return devolver;
     }
     
     public boolean añadirCapitulo(int posicion, Capitulo capitulo){
+        boolean devolver = false;
         Capitulo c1=new Capitulo(capitulo);
-        if(capitulos.contains(c1) || c1.getFechaEmision().isBefore(this.fechaEstreno) || capitulos.size() < posicion){ 
-            return false;
-        } else {
-            capitulos.add(posicion, c1);
-            return true;
+        if(!capitulos.contains(c1) && c1.getFechaEmision().isAfter(this.fechaEstreno) && capitulos.size() >= posicion){ 
+            devolver=true;
         }
+        return devolver;
     }
     
     public boolean añadirCapitulo(int posicion, LocalDate fechaEmision, String titulo){
+        boolean devolver = false;
         Capitulo c1 = new Capitulo(titulo,fechaEmision);
-        if(capitulos.contains(c1) || c1.getFechaEmision().isBefore(this.fechaEstreno) || capitulos.size() < posicion ){ 
-            return false;
-        } else {
-            capitulos.add(posicion, c1);
-            return true;
+        if(!capitulos.contains(c1) && c1.getFechaEmision().isAfter(this.fechaEstreno) && capitulos.size() >= posicion ){ 
+            devolver=true;
         }
+        return devolver;
     }
     
     public boolean eliminarCapitulo(String Titulo){
@@ -82,57 +78,74 @@ public class Temporada {
     Es necesario comprobar que funciona correctamente.
     */
     public boolean setCapitulo(int posicion, LocalDate fechaEmision, String Titulo){
+        boolean devolver = false;
         if(capitulos.contains(capitulos.get(posicion))){
             capitulos.get(posicion).setFechaEmision(fechaEmision);
             capitulos.get(posicion).setTitulo(Titulo);
-            return true;
-        } else {
-            return false;
+            devolver=true;
         }
+        return devolver;
     }
     
     public boolean setCapitulo(int posicion, LocalDate fechaEmision){
+        boolean devolver = false;
         if(capitulos.contains(capitulos.get(posicion))){
             capitulos.get(posicion).setFechaEmision(fechaEmision);
-            return true;
-        } else {
-            return false;
+            devolver=true;
         }
+        return devolver;
     }
     
     public boolean setCapitulo(int posicion, String Titulo){
+        boolean devolver = false;
         if(capitulos.contains(capitulos.get(posicion))){
             capitulos.get(posicion).setTitulo(Titulo);
-            return true;
-        } else {
-            return false;
+            devolver=true;
         }
+        return devolver;
     }
     
     public boolean meGusta(int posicionCapitulo, boolean like){
+        boolean devolver = false;
         if(capitulos.contains(capitulos.get(posicionCapitulo))){
             capitulos.get(posicionCapitulo).meGusta(like);
-            return true;
-        } else {
-            return false;
+            devolver=true;
         }
+        return devolver;
     }
     
     public boolean meGusta(String titulo, boolean like){
-        
-        
-        return true;//ejemplo
+        boolean devolver = false;
+        if(capitulos.contains(capitulos.get(capitulos.indexOf(titulo)))){
+            capitulos.get(capitulos.indexOf(titulo)).meGusta(like);
+            devolver = true;
+        }        
+        return devolver;
     }
     
     public boolean setFechaEstreno(LocalDate fecha){
+        boolean devolver = false;
         if(capitulos.contains(capitulos.get(capitulos.indexOf(fecha)))){
             this.fechaEstreno=fecha;
-            return true;
-        } else {
-            return false;
+            devolver=true;
         }
+        return devolver;
     }
-    
+    /*
+    public ArrayList<Capitulo> capitulosMejorValorados(int n){ //hora de llorar.
+        ArrayList<Capitulo> devolver;
+        for (int i = 0; i <= n; i++) {
+            
+            devolver.add(capitulos.get(n).getVotosNegativos());
+            
+        }
+        
+        
+        
+        
+        return devolver;
+    }
+    */
     
     
     
