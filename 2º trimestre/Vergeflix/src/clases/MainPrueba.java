@@ -39,6 +39,21 @@ public class MainPrueba {
         DateTimeFormatter fechaDTF = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         System.out.println(fecha2.format(fechaDTF));
         
+        Serie s1 = new Serie("Lo que el viento se llevó",15,LocalDate.of(2020, Month.MARCH, 3),LocalDate.of(2020, Month.MARCH, 5),true);
+        System.out.println(s1.getFechaEstreno().format(fechaDTF));
+        if(s1.añadirTemporada(fecha2)!=true){
+            System.out.println("ya");
+        }
+        if(s1.añadirTemporada(LocalDate.of(2021, Month.MARCH, 1))==true){
+            System.out.println("ya 2");
+        }
+        
+        
+        
+        
+        
+        
+        
     }
     
 }

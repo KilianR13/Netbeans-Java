@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author DAW-B
  */
-public class Temporada {
+public class Temporada implements valorable {
     private LocalDate fechaEstreno;
     private ArrayList<Capitulo> capitulos;
     
@@ -155,5 +155,14 @@ public class Temporada {
     @Override
     public String toString(){
         return "Fecha de estreno de la temporada: "+fechaEstreno;
+    }
+
+    @Override
+    public int calcularPuntuacion() {
+        int totalpuntuacion=0;
+        for (int i = 0; i < capitulos.size(); i++) {
+            totalpuntuacion=totalpuntuacion+capitulos.get(i).calcularPuntuacion();
+        }
+        return totalpuntuacion/capitulos.size();
     }
 }

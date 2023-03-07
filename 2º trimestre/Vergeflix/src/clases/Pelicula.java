@@ -10,7 +10,7 @@ import java.time.LocalDate;
  *
  * @author DAW-B
  */
-public class Pelicula extends Media{
+public class Pelicula extends Media implements valorable{
     private String director;
     private String actorPrincipal;
     private int duracion;
@@ -66,16 +66,6 @@ public class Pelicula extends Media{
         this.categoria = categoria;
     }
     
-    
-    @Override
-    public String toString(){
-        return "Director:"+director+", Actor principal:"+actorPrincipal+", Duración:"+duracion+", Categoría:"+categoria;
-    }
-    
-    private enum Tematica{
-        COMEDIA,DRAMA,TERROR,SUSPENSE,CIENCIA_FICCION,FANTASIA
-    }
-    
     public boolean votar(int voto){
         boolean devolver = false;
         if(voto<=10 && voto>=0){
@@ -84,4 +74,23 @@ public class Pelicula extends Media{
         }
         return devolver;
     }
+    
+    @Override
+    public String toString(){
+        return "Director:"+director+", Actor principal:"+actorPrincipal+", Duración:"+duracion+", Categoría:"+categoria;
+    }
+
+    @Override
+    public int calcularPuntuacion() {
+        int votostotal=0;
+        for (int i = 0; i < votos.size(); i++) {
+            votostotal=votostotal+votos.get(i);
+        }
+        return votostotal/votos.size();
+    }
+    
+    private enum Tematica{
+        COMEDIA,DRAMA,TERROR,SUSPENSE,CIENCIA_FICCION,FANTASIA
+    }
+    
 }

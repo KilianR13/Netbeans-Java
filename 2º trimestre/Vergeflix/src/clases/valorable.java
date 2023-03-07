@@ -9,5 +9,5 @@ package clases;
  * @author DAW-B
  */
 public interface valorable {
-    
+    int calcularPuntuacion();
 }

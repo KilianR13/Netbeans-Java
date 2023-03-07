@@ -10,7 +10,7 @@ import java.time.LocalDate;
  *
  * @author DAW-B
  */
-public class Capitulo {
+public class Capitulo implements valorable {
     private int votosPositivos;
     private int votosNegativos;
     private String titulo;
@@ -61,5 +61,11 @@ public class Capitulo {
     @Override
     public String toString(){
         return "Nombre del capítulo:"+titulo+", Fecha de emisión:"+fechaEmision+".\nVotos positivos:"+votosPositivos+", Votos negativos:"+votosNegativos;
+    }
+
+    @Override
+    public int calcularPuntuacion() {
+        int votostotales=this.votosPositivos+this.votosNegativos;
+        return (this.votosPositivos/votostotales)*10;
     }
 }
